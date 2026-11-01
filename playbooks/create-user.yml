@@ -1,0 +1,21 @@
+---
+- name: Create Linux User
+  hosts: webservers
+  become: true
+
+  vars:
+    username: devopsadmin
+
+  tasks:
+
+    - name: Create User
+      user:
+        name: "{{ username }}"
+        shell: /bin/bash
+        create_home: true
+
+    - name: Configure Passwordless Sudo
+      copy:
+        dest: "/etc/sudoers.d/{{ username }}"
+        content: "{{ username }} ALL=(ALL) NOPASSWD:ALL"
+        mode: '0440'
