@@ -1,0 +1,4 @@
+---
+nginx_package: nginx
+docker_package: docker
+default_user: ec2-user
