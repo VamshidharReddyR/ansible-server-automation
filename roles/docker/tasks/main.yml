@@ -1,17 +1,18 @@
 ---
 - name: Install Docker
   package:
-    name: docker
+    name: "{{ docker_package }}"
     state: present
 
 - name: Start and Enable Docker Service
   service:
-    name: docker
+    name: "{{ docker_package }}"
     state: started
     enabled: true
 
-- name: Add ec2-user to Docker Group
+- name: Add User to Docker Group
   user:
-    name: ec2-user
+    name: "{{ default_user }}"
     groups: docker
     append: true
+
