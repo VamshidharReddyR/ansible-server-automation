@@ -1,0 +1,8 @@
+---
+- import_playbook: webserver.yml
+
+- import_playbook: docker.yml
+
+- import_playbook: create-user.yml
+
+- import_playbook: system-update.yml
