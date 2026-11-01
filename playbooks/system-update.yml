@@ -1,0 +1,15 @@
+---
+- name: Update Linux Servers
+  hosts: webservers
+  become: true
+
+  tasks:
+
+    - name: Update All Packages
+      package:
+        name: "*"
+        state: latest
+
+    - name: Clean Package Cache
+      command: yum clean all
+      changed_when: false
